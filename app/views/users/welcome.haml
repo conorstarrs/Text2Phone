@@ -1,6 +1,9 @@
-%p{:style=>"text-align:center;"}
-  %h1 Welcome #{@user_email}
-  Hello
-%br
-%br/
-= link_to 'Index', :controller=> 'texts', :action => 'index'
+%p{:align=>'center'}
+  =link_to image_tag( '/assets/ipnotes.png'), {:controller => :texts, :action => :index}, {:alt => "Texts", :border => "0", :height => "100", :width => "100"}
+  %br
+  My Texts
+  %br
+  %br
+  =link_to image_tag( '/assets/ipcont.jpg'), {:controller => :users, :action => :info}, {:alt => "My Profile", :border => "0", :height => "100", :width => "100"}
+  %br
+  My Profile
