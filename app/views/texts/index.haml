@@ -1,0 +1,27 @@
+%h1
+  Listing texts for #{@user_email}
+%br/
+Last signed in
+%i= @user_last_signin
+- if @texts.blank?
+  %br/
+  %br/
+  %b You have no texts recorded yet!
+  %br/
+- else
+  %table
+    %tr
+      %th Text
+      %th Created date
+      %th
+      %th
+      %th
+    - @texts.each do |text|
+      %tr
+        %td= text.text
+        %td= text.created_date
+        %td= link_to 'Show', text
+        %td= link_to 'Edit', edit_text_path(text)
+        %td= link_to 'Destroy', text, confirm: 'Are you sure?', method: :delete
+%br/
+= link_to 'New Text', new_text_path

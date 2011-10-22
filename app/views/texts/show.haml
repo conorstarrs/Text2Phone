@@ -1,0 +1,13 @@
+%p#notice= notice
+%p
+  %b User:
+  = @user_email
+%p
+  %b Text:
+  = @text.text
+%p
+  %b Created date:
+  = @text.created_date
+= link_to 'Edit', edit_text_path(@text)
+|
+\#{link_to 'Back', texts_path}
