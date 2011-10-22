@@ -121,3 +121,15 @@ strong, b { font-weight: bold; }
 /* ------------ */
 #footer { clear: both; border-top: 1px #ddd dotted; margin: 40px 0 0 0; padding: 5px 0 0 0; color: #aaa; }
 #footer .twitter { float: right; }
+
+.table-texts {
+	border-collapse: collapse;
+}
+
+.odd {
+  background: #EEEEEE;
+}
+
+.even {
+  background: #FFFFFF;
+}
