@@ -12,17 +12,6 @@ class TextsController < ApplicationController
       format.json { render json: @texts }
     end
   end
-  
-  def texts
-    @texts = Text.where("user_id = ?", current_user.id)
-    @user_email = current_user.email
-    @user_last_signin = current_user.last_sign_in_at
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @texts }
-    end
-  end
 
   # GET /texts/1
   # GET /texts/1.json
@@ -96,4 +85,5 @@ class TextsController < ApplicationController
       format.json { head :ok }
     end
   end
+  
 end
