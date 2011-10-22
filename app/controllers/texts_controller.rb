@@ -3,7 +3,7 @@ class TextsController < ApplicationController
   # GET /texts
   # GET /texts.json
   def index
-    @texts = Text.where("user_id = ?", current_user.id)
+    @texts = Text.where("user_id = ?", current_user.id).order('created_at DESC')
     @user_email = current_user.email
     @user_last_signin = current_user.last_sign_in_at
 
@@ -39,6 +39,7 @@ class TextsController < ApplicationController
 
   # GET /texts/1/edit
   def edit
+    @user_id = current_user.id
     @text = Text.find(params[:id])
   end
 
