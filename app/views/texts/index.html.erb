@@ -1,26 +1,31 @@
-<h1>Listing texts</h1>
+<h1>Listing texts for <%= @user_email %></h1>
+<br />
+Last signed in <i><%= @user_last_signin %></i>
+<% if @texts.nil? %>
 
-<table>
-  <tr>
-    <th>User</th>
-    <th>Text</th>
-    <th>Created date</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+    <b>You have no texts recorded yet!</b>
 
+<% else %>
+	<table>
+	  <tr>
+	    <th>Text</th>
+	    <th>Created date</th>
+	    <th></th>
+	    <th></th>
+	    <th></th>
+	  </tr>
 <% @texts.each do |text| %>
-  <tr>
-    <td><%= text.user_id %></td>
-    <td><%= text.text %></td>
-    <td><%= text.created_date %></td>
-    <td><%= link_to 'Show', text %></td>
-    <td><%= link_to 'Edit', edit_text_path(text) %></td>
-    <td><%= link_to 'Destroy', text, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
+  			<tr>
+    			<td><%= text.text %></td>
+    			<td><%= text.created_date %></td>
+    			<td><%= link_to 'Show', text %></td>
+    			<td><%= link_to 'Edit', edit_text_path(text) %></td>
+    			<td><%= link_to 'Destroy', text, confirm: 'Are you sure?', method: :delete %></td>
+  			</tr>
+	</table>
+	<% end %>
 <% end %>
-</table>
+
 
 <br />
 

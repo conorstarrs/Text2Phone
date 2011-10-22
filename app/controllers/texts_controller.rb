@@ -1,8 +1,11 @@
 class TextsController < ApplicationController
+  before_filter :authenticate_user!
   # GET /texts
   # GET /texts.json
   def index
-    @texts = Text.all
+    @texts = Text.where("user_id = ?", current_user.id)
+    @user_email = current_user.email
+    @user_last_signin = current_user.last_sign_in_at
 
     respond_to do |format|
       format.html # index.html.erb
@@ -24,6 +27,7 @@ class TextsController < ApplicationController
   # GET /texts/new
   # GET /texts/new.json
   def new
+    @user_id = current_user.id
     @text = Text.new
 
     respond_to do |format|
