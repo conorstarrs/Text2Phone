@@ -7,8 +7,3 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
-
-
-function copyToClipboard (text) {
-  window.prompt ("Copy to clipboard: Ctrl+C, Enter", text);
-}
