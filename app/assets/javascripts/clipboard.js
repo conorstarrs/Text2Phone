@@ -1,3 +1,3 @@
 function copyToClipboard (a) {
-  window.prompt ("Copy to clipboard: Ctrl+C, Enter",a);
+  window.prompt ("Copy the text below to your clipboard:",a);
 }
