@@ -33,10 +33,9 @@
       %th
       %th
     - @texts.each do |text|
-    - copy = text.text.gsub(/[\W\s]/, ' ')
+    -copy = text.text.gsub(/[\\&\'&\`&\"\s]/, ' ')
       %tr{:class=>cycle("odd","even")}
         %td=link_to(image_tag( '/assets/copyclip.png', :alt=>"CopyClipboard", :border => "0", :onclick=>"copyToClipboard('#{copy}');"))
-
         %td= text.text
         %td= text.created_date
         %td= link_to 'Show', text
