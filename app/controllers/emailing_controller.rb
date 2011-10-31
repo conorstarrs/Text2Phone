@@ -8,7 +8,7 @@ class EmailingController < ApplicationController
     @user = current_user
     @text = Text.find(params[:text])
     EmailText.email_me(@user, @text).deliver
-    flash[:notice] = "Your message has been sent."
+    flash[:notice] = "Your email has been sent."
     redirect_to :controller => 'texts', :action => "index"
   end
   
@@ -17,7 +17,7 @@ class EmailingController < ApplicationController
     @user = current_user
     @text = Text.find(params[:text])
     EmailText.email_friend(@friend_email, @user, @text).deliver
-    flash[:notice] = "Your message has been sent."
+    flash[:notice] = "Your email has been sent."
     redirect_to :controller => 'texts', :action => "index"
   end
 end

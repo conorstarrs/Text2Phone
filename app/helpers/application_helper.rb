@@ -7,4 +7,5 @@ module ApplicationHelper
     rv << "</tr>\n".html_safe
     return rv
   end
+
 end

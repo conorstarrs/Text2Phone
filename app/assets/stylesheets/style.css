@@ -133,3 +133,14 @@ strong, b { font-weight: bold; }
 .even {
   background: #FFFFFF;
 }
+
+.notice {
+margin-left: auto;
+margin-right: auto;
+text-align: center;
+width: 40%;
+margin-top: 15px;
+padding: 5px;
+font-weight: bold;
+color: #00CC33;
+}
