@@ -27,6 +27,7 @@
   %table{:class=>"table-texts"}
     %tr{:class=>cycle("odd","even")}
       %th Copy to Clipboard
+      %th Send by E-mail
       %th Text
       %th Created date
       %th
@@ -35,7 +36,8 @@
     - @texts.each do |text|
     -copy = text.text.gsub(/[\\&\'&\`&\"\s]/, ' ')
       %tr{:class=>cycle("odd","even")}
-        %td=link_to(image_tag( '/assets/copyclip.png', :alt=>"CopyClipboard", :border => "0", :onclick=>"copyToClipboard('#{copy}');"))
+        %td= link_to(image_tag( '/assets/copyclip.png', :alt=>"CopyClipboard", :border => "0", :onclick=>"copyToClipboard('#{copy}');"))
+        %td= link_to(image_tag('/assets/mail.png'), {:controller => :emailing, :action => :index, :text => text })
         %td= text.text
         %td= text.created_date
         %td= link_to 'Show', text

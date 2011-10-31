@@ -1,0 +1,13 @@
+=form_tag(:controller => :emailing, :action => :email_friend) do
+  %b Your text:
+  #{@text.text}
+  %br
+  %br
+  =link_to ("Click HERE to e-mail this to yourself!"), :controller => 'emailing', :action => 'email_me', :text => @text
+  %b (#{@email})
+  %br
+  %br
+  Or send to someone else:
+  =hidden_field_tag :text, @text.id 
+  =text_field_tag ("friend")
+  =submit_tag 'Send Mail!'
