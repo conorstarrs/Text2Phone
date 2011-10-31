@@ -1,4 +1,8 @@
 Text2Phone::Application.routes.draw do
+  get "emailing/index"
+
+  get "emailing/create"
+
   devise_for :users
 
   resources :texts
