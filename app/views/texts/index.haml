@@ -17,7 +17,9 @@
   %li
     %a{:href => "/users/sign_out", :title => "Sign Out"} Sign Out
     %span /
-
+%br
+%b Welcome Back! To copy, e-mail, or generate a QR Code for your text please click on the icon to the left of it.
+%br
 %br
 - if @texts.blank?
   %br/
@@ -28,7 +30,8 @@
   %table{:class=>"table-texts"}
     %tr{:class=>cycle("odd","even")}
       %th Copy to Clipboard
-      %th Send by E-mail
+      %th Send by Email
+      %th Generate QR Code
       %th Text
       %th Created date
       %th
@@ -39,6 +42,7 @@
       %tr{:class=>cycle("odd","even")}
         %td= link_to(image_tag( '/assets/copyclip.png', :alt=>"CopyClipboard", :border => "0", :onclick=>"copyToClipboard('#{copy}');"))
         %td= link_to(image_tag('/assets/mail.png'), {:controller => :emailing, :action => :index, :text => text })
+        %td= link_to(image_tag('/assets/qr.png'), {:controller => :texts, :action => :qr, :id => text })
         %td= text.text
         %td= text.created_date
         %td= link_to 'Show', text

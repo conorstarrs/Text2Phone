@@ -13,6 +13,7 @@ gem "execjs"
 gem "therubyracer"
 gem 'therubyracer-heroku'
 gem 'haml'
+gem 'rqrcode'
 
 # Gems used only for assets and not required
 # in production environments by default.

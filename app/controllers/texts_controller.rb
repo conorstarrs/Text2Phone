@@ -1,16 +1,21 @@
 class TextsController < ApplicationController
+  require 'rqrcode'
   before_filter :authenticate_user!
   # GET /texts
   # GET /texts.json
   def index
     @texts = Text.where("user_id = ?", current_user.id).order('created_at DESC')
     @user_email = current_user.email
-    @user_last_signin = current_user.last_sign_in_at
-
+    @user_last_signin = current_user.last_sign_in_at  
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @texts }
     end
+  end
+  
+  def qr
+    @text = Text.find(params[:id]).text
+    @qr = RQRCode::QRCode.new("#{@text}", :size => 20, :level => :l)
   end
 
   # GET /texts/1
@@ -18,7 +23,6 @@ class TextsController < ApplicationController
   def show
     @text = Text.find(params[:id])
     @user_email = current_user.email
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @text }
@@ -30,7 +34,6 @@ class TextsController < ApplicationController
   def new
     @user_id = current_user.id
     @text = Text.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @text }
@@ -46,8 +49,7 @@ class TextsController < ApplicationController
   # POST /texts
   # POST /texts.json
   def create
-    @text = Text.new(params[:text])
-
+    @texts= Text.new(params[:text])
     respond_to do |format|
       if @text.save
         format.html { redirect_to @text, notice: 'Text was successfully created.' }
@@ -63,7 +65,6 @@ class TextsController < ApplicationController
   # PUT /texts/1.json
   def update
     @text = Text.find(params[:id])
-
     respond_to do |format|
       if @text.update_attributes(params[:text])
         format.html { redirect_to @text, notice: 'Text was successfully updated.' }
@@ -80,11 +81,9 @@ class TextsController < ApplicationController
   def destroy
     @text = Text.find(params[:id])
     @text.destroy
-
     respond_to do |format|
       format.html { redirect_to texts_url }
       format.json { head :ok }
     end
   end
-  
 end
